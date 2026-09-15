@@ -1,12 +1,12 @@
 {
-    "name": "AiRCo Insights - AI-Powered Business Intelligence",
-    "short_name": "AiRCo Insights",
-    "description": "Transform complex business data into clear, actionable intelligence with AI-powered analytics",
+    "name": "AiRCO — From Data to Intelligence",
+    "short_name": "AiRCO",
+    "description": "AiRCO turns your organisation's fragmented data into structured, actionable intelligence.",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
-    "background_color": "#0a0a0a",
-    "theme_color": "#8b5cf6",
+    "background_color": "#030712",
+    "theme_color": "#0b2b5c",
     "orientation": "portrait-primary",
     "icons": [
         {
@@ -23,6 +23,12 @@
             "src": "/apple-touch-icon.png",
             "sizes": "180x180",
             "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "/android-chrome-512x512.png",

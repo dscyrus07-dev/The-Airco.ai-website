@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 
 export const siteConfig = {
-    name: "AiRCo Insights",
+    name: "AiRCO",
     description:
-        "Transform complex business data into clear, actionable intelligence. AI-powered analytics platform for faster, smarter decisions.",
-    url: "https://insights.theairco.ai",
-    ogImage: "https://insights.theairco.ai/images/og-image.png",
+        "AiRCO — AI Revolution Company Pvt Ltd — turns your organisation's fragmented data into structured, actionable intelligence across video, audio, documents, text, and conversations.",
+    url: "https://theairco.ai",
+    ogImage: "https://theairco.ai/images/og-image.png",
     links: {
         twitter: "https://twitter.com/theairco",
         linkedin: "https://www.linkedin.com/company/theairco",
@@ -124,16 +124,16 @@ export function constructMetadata({
 export const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "TheAiRCo",
-    alternateName: "AiRCo Insights",
+    name: "AiRCO — AI Revolution Company Pvt Ltd",
+    alternateName: "AiRCO",
     url: "https://www.the-airco.com",
-    logo: "https://insights.theairco.ai/logo.png",
+    logo: "https://theairco.ai/logo.png",
     description:
-        "AI-powered business intelligence and analytics platform provider. Specializing in predictive analytics, data visualization, and automated insights.",
+        "Data analytics company specialising in transforming raw, unstructured data — video, audio, documents, text, and conversations — into structured, actionable intelligence.",
     sameAs: [
         "https://twitter.com/theairco",
         "https://www.linkedin.com/company/theairco",
-        "https://insights.theairco.ai",
+        "https://theairco.ai",
     ],
     contactPoint: {
         "@type": "ContactPoint",
@@ -143,6 +143,7 @@ export const organizationSchema = {
     },
     address: {
         "@type": "PostalAddress",
+        addressLocality: "Mumbai",
         addressCountry: "IN",
     },
 };
@@ -151,7 +152,7 @@ export const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "AiRCo Insights",
-    url: "https://insights.theairco.ai",
+    url: "https://theairco.ai",
     description: siteConfig.description,
     publisher: {
         "@type": "Organization",
@@ -161,7 +162,7 @@ export const websiteSchema = {
         "@type": "SearchAction",
         target: {
             "@type": "EntryPoint",
-            urlTemplate: "https://insights.theairco.ai/?s={search_term_string}",
+            urlTemplate: "https://theairco.ai/?s={search_term_string}",
         },
         "query-input": "required name=search_term_string",
     },
@@ -184,7 +185,7 @@ export const softwareApplicationSchema = {
         ratingCount: "127",
     },
     description: siteConfig.description,
-    screenshot: "https://insights.theairco.ai/images/og-image.png",
+    screenshot: "https://theairco.ai/images/og-image.png",
     featureList: [
         "AI-Powered Analytics",
         "Real-time Data Visualization",

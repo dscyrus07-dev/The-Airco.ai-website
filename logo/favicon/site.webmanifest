@@ -1,6 +1,6 @@
 {
-  "name": "AiRCO — From Data to Intelligence",
-  "short_name": "AiRCO",
+  "name": "MyWebSite",
+  "short_name": "MySite",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#0b2b5c",
-  "background_color": "#030712",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone"
 }

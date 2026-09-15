@@ -1,17 +1,12 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
-const config: any = {
+const config: Partial<Config> = {
   darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  safelist: [
-    'shimmer-animation',
-    'gpu-accelerate',
-    'animate-float',
-    'animate-pulse-glow',
   ],
   theme: {
     extend: {
@@ -76,7 +71,7 @@ const config: any = {
       }
     }
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 };
 
 export default config;

@@ -211,6 +211,35 @@ body {
   transform: scale(1.05);
 }
 
+/* ===== MARQUEE ===== */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 3rem)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 30s) linear infinite;
+}
+
+/* ===== SHIMMER TEXT ===== */
+@keyframes shimmer-text {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-shimmer-text {
+  background-size: 200% 100%;
+  animation: shimmer-text 6s linear infinite;
+}
+
 /* ===== ACCESSIBILITY ===== */
 @media (prefers-reduced-motion: reduce) {
   *,

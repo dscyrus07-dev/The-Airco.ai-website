@@ -15,8 +15,8 @@ const nextConfig: NextConfig = {
   /* Compression */
   compress: true,
 
-  /* Trailing Slash */
-  trailingSlash: false,
+  /* Trailing Slash — export pages as dir/index.html so Apache serves them */
+  trailingSlash: true,
 
   /* Power by header */
   poweredByHeader: false,

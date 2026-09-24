@@ -5,6 +5,7 @@ import FinalCTA from "@/components/site/FinalCTA";
 import { PrimaryButton } from "@/components/site/Buttons";
 import { SectionHeading, ShimmerText, FadeIn } from "@/components/ui/section";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { Traction } from "@/components/visuals/Traction";
 
 export const metadata: Metadata = {
     title: "About AiRCO | Data Should Be Understood, Not Just Stored",
@@ -67,32 +68,6 @@ const missionSteps = [
     { step: "03", label: "DISCOVER", description: "Important signals" },
     { step: "04", label: "DECIDE", description: "Decision-ready insight" },
     { step: "05", label: "ACT", description: "Clear action" },
-];
-
-const clientGroups = [
-    {
-        label: "Clients · Airco Insights",
-        clients: [
-            { name: "Angel One", logo: "/clients/angel-one.png", detail: "Bank statement analysis" },
-            { name: "myPaisaa", logo: "/clients/mypaisaa.png", detail: "Bank statement analysis" },
-        ],
-    },
-    {
-        label: "Clients · Video Analytics",
-        clients: [
-            { name: "Zostel", logo: "/clients/zostel.png", detail: "Video analytics · 3 properties" },
-            { name: "Yaar", logo: "/clients/yaar.png", detail: "Friendly Bar · Video analytics" },
-            { name: "Tosi Benne Dosa", logo: "/clients/tosi.png", detail: "Video analytics" },
-        ],
-    },
-];
-
-const pilots = [
-    { name: "Flipkart", logo: "/clients/flipkart.webp", detail: "E-commerce" },
-    { name: "OYO", logo: "/clients/oyo.webp", detail: "Hospitality" },
-    { name: "StayVista", logo: "/clients/stayvista.webp", detail: "Luxury villa stays" },
-    { name: "Bakingo", logo: "/clients/bakingo.webp", detail: "D2C food & gifting" },
-    { name: "AB Living Group", logo: "/clients/ab-living-group.webp", detail: "Real estate & lifestyle" },
 ];
 
 const certifications = [
@@ -268,60 +243,7 @@ export default function AboutPage() {
             </section>
 
             {/* Traction */}
-            <section className="bg-black py-24">
-                <div className="container mx-auto max-w-7xl px-4 md:px-6">
-                    <SectionHeading eyebrow="Traction" title="Trusted by leading Indian brands" />
-                    <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-                        {clientGroups.map((group) => (
-                            <FadeIn key={group.label}>
-                                <p className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-purple-400">
-                                    {group.label}
-                                </p>
-                                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                    {group.clients.map((client) => (
-                                        <div key={client.name} className="text-center">
-                                            <div className="flex h-28 items-center justify-center rounded-xl bg-white p-4">
-                                                <img
-                                                    src={client.logo}
-                                                    alt={client.name}
-                                                    className="max-h-full max-w-full object-contain"
-                                                />
-                                            </div>
-                                            <p className="mt-3 font-semibold text-white">{client.name}</p>
-                                            <p className="mt-1 text-xs uppercase tracking-wider text-gray-500">
-                                                {client.detail}
-                                            </p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </FadeIn>
-                        ))}
-                    </div>
-
-                    <FadeIn delay={0.15}>
-                        <p className="mb-5 mt-16 text-xs font-bold uppercase tracking-[0.25em] text-purple-400">
-                            Ongoing Pilots
-                        </p>
-                        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-                            {pilots.map((pilot) => (
-                                <div key={pilot.name} className="text-center">
-                                    <div className="flex h-24 items-center justify-center rounded-xl bg-white p-4">
-                                        <img
-                                            src={pilot.logo}
-                                            alt={pilot.name}
-                                            className="max-h-full max-w-full object-contain"
-                                        />
-                                    </div>
-                                    <p className="mt-3 text-sm font-semibold text-white">{pilot.name}</p>
-                                    <p className="mt-1 text-xs uppercase tracking-wider text-gray-500">
-                                        {pilot.detail}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </FadeIn>
-                </div>
-            </section>
+            <Traction />
 
             {/* Trust & Compliance */}
             <section className="py-24">

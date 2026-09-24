@@ -69,6 +69,69 @@ const missionSteps = [
     { step: "05", label: "ACT", description: "Clear action" },
 ];
 
+const clientGroups = [
+    {
+        label: "Clients · Airco Insights",
+        clients: [
+            { name: "Angel One", logo: "/clients/angel-one.png", detail: "Bank statement analysis" },
+            { name: "myPaisaa", logo: "/clients/mypaisaa.png", detail: "Bank statement analysis" },
+        ],
+    },
+    {
+        label: "Clients · Video Analytics",
+        clients: [
+            { name: "Zostel", logo: "/clients/zostel.png", detail: "Video analytics · 3 properties" },
+            { name: "Yaar", logo: "/clients/yaar.png", detail: "Friendly Bar · Video analytics" },
+            { name: "Tosi Benne Dosa", logo: "/clients/tosi.png", detail: "Video analytics" },
+        ],
+    },
+];
+
+const pilots = [
+    { name: "Flipkart", logo: "/clients/flipkart.webp", detail: "E-commerce" },
+    { name: "OYO", logo: "/clients/oyo.webp", detail: "Hospitality" },
+    { name: "StayVista", logo: "/clients/stayvista.webp", detail: "Luxury villa stays" },
+    { name: "Bakingo", logo: "/clients/bakingo.webp", detail: "D2C food & gifting" },
+    { name: "AB Living Group", logo: "/clients/ab-living-group.webp", detail: "Real estate & lifestyle" },
+];
+
+const certifications = [
+    {
+        name: "ISO/IEC 27001:2022",
+        subtitle: "Information Security (ISMS)",
+        certNo: "305026010959IS",
+        issuer: "QRO Certification LLP",
+        validity: "Valid to 08 Jan 2029",
+        description: "Audited controls protecting client data end to end.",
+    },
+    {
+        name: "GDPR Compliance",
+        subtitle: "General Data Protection Regulation",
+        certNo: "2026010919",
+        issuer: "Eurocert Inspection Ltd",
+        validity: "Valid to 08 Jan 2029",
+        description: "Personal data handled to EU-grade privacy standards.",
+    },
+    {
+        name: "MSME · Udyam",
+        subtitle: "Registered Micro Enterprise (Services)",
+        certNo: "UDYAM-MH-18-0510961",
+        issuer: "Ministry of MSME, Govt. of India",
+        validity: "Classified 07 Jan 2026",
+        description: "Eligible for MSE benefits in public procurement.",
+    },
+    {
+        name: "DPIIT Startup India",
+        subtitle: "Recognised Startup · AI industry",
+        certNo: "DIPP238628",
+        issuer: "DPIIT, Govt. of India",
+        validity: "Valid to 30 Jan 2035",
+        description: "Eligible for startup relaxations in government tenders.",
+    },
+];
+
+const certifiedScope = ["Collection", "Processing", "Storage", "Analysis"];
+
 export default function AboutPage() {
     return (
         <SiteShell>
@@ -200,6 +263,124 @@ export default function AboutPage() {
                             To make every data source an asset that organisations can{" "}
                             <ShimmerText>understand, trust, and act on.</ShimmerText>
                         </p>
+                    </FadeIn>
+                </div>
+            </section>
+
+            {/* Traction */}
+            <section className="bg-black py-24">
+                <div className="container mx-auto max-w-7xl px-4 md:px-6">
+                    <SectionHeading eyebrow="Traction" title="Trusted by leading Indian brands" />
+                    <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+                        {clientGroups.map((group) => (
+                            <FadeIn key={group.label}>
+                                <p className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-purple-400">
+                                    {group.label}
+                                </p>
+                                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                    {group.clients.map((client) => (
+                                        <div key={client.name} className="text-center">
+                                            <div className="flex h-28 items-center justify-center rounded-xl bg-white p-4">
+                                                <img
+                                                    src={client.logo}
+                                                    alt={client.name}
+                                                    className="max-h-full max-w-full object-contain"
+                                                />
+                                            </div>
+                                            <p className="mt-3 font-semibold text-white">{client.name}</p>
+                                            <p className="mt-1 text-xs uppercase tracking-wider text-gray-500">
+                                                {client.detail}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </FadeIn>
+                        ))}
+                    </div>
+
+                    <FadeIn delay={0.15}>
+                        <p className="mb-5 mt-16 text-xs font-bold uppercase tracking-[0.25em] text-purple-400">
+                            Ongoing Pilots
+                        </p>
+                        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+                            {pilots.map((pilot) => (
+                                <div key={pilot.name} className="text-center">
+                                    <div className="flex h-24 items-center justify-center rounded-xl bg-white p-4">
+                                        <img
+                                            src={pilot.logo}
+                                            alt={pilot.name}
+                                            className="max-h-full max-w-full object-contain"
+                                        />
+                                    </div>
+                                    <p className="mt-3 text-sm font-semibold text-white">{pilot.name}</p>
+                                    <p className="mt-1 text-xs uppercase tracking-wider text-gray-500">
+                                        {pilot.detail}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
+            {/* Trust & Compliance */}
+            <section className="py-24">
+                <div className="container mx-auto max-w-7xl px-4 md:px-6">
+                    <SectionHeading
+                        eyebrow="Trust & Compliance"
+                        title="Independently certified and recognised"
+                    />
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                        {certifications.map((cert, i) => (
+                            <FadeIn key={cert.name} delay={i * 0.08}>
+                                <SpotlightCard className="h-full p-6">
+                                    <h3 className="text-lg font-bold text-white">{cert.name}</h3>
+                                    <p className="mt-1 text-sm text-gray-400">{cert.subtitle}</p>
+                                    <div className="mt-5 space-y-2 border-t border-white/10 pt-4 text-xs">
+                                        <p className="text-gray-500">
+                                            <span className="block uppercase tracking-widest text-purple-400/70">
+                                                Certificate no.
+                                            </span>
+                                            <span className="mt-0.5 block font-mono text-gray-300">
+                                                {cert.certNo}
+                                            </span>
+                                        </p>
+                                        <p className="text-gray-500">{cert.issuer}</p>
+                                        <p className="font-medium text-emerald-400/90">{cert.validity}</p>
+                                    </div>
+                                    <p className="mt-4 text-sm leading-relaxed text-gray-400">
+                                        {cert.description}
+                                    </p>
+                                </SpotlightCard>
+                            </FadeIn>
+                        ))}
+                    </div>
+
+                    <FadeIn delay={0.15}>
+                        <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:flex md:items-center md:justify-between md:gap-8">
+                            <div>
+                                <p className="text-xs font-bold uppercase tracking-[0.25em] text-purple-400">
+                                    Certified scope
+                                </p>
+                                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-400">
+                                    Video intelligence, video analytics and data analytics services —
+                                    ensuring confidentiality, integrity and compliance with data
+                                    protection requirements.
+                                </p>
+                            </div>
+                            <div className="mt-5 flex flex-wrap items-center gap-2 md:mt-0 md:shrink-0">
+                                {certifiedScope.map((stage, i) => (
+                                    <span key={stage} className="flex items-center gap-2">
+                                        <span className="rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1.5 text-xs font-semibold text-purple-300">
+                                            {stage}
+                                        </span>
+                                        {i < certifiedScope.length - 1 && (
+                                            <span className="text-gray-600">→</span>
+                                        )}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
                     </FadeIn>
                 </div>
             </section>

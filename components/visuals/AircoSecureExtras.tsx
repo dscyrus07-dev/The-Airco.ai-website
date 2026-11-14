@@ -25,26 +25,58 @@ const brochures = [
 
 const demos = [
     {
-        id: "demo",
-        label: "Airco Secure — Full Demo",
-        file: "/videos/airco-secure/airco-secure-demo.mp4",
-        tag: "Product Demo",
-        tagColor: "bg-purple-600",
-        what: "Watch the complete Airco Secure platform in action — from live camera feeds to AI detection alerts and the full dashboard experience.",
+        id: "guest-welcome",
+        label: "Guest Welcome Detection",
+        file: "/videos/airco-secure/guest-welcome.mp4",
+        tag: "Hospitality",
+        tagColor: "bg-rose-600",
+        what: "The moment a guest walks in, the AI detects and welcomes them. No button press, no staff needed — the camera does it on its own.",
     },
     {
-        id: "density",
-        label: "Density & Crowd Detection",
-        file: "/videos/airco-secure/density-detection.mp4",
+        id: "activity-detection",
+        label: "Activity Detection",
+        file: "/videos/airco-secure/activity-detection.mp4",
         tag: "AI Model",
         tagColor: "bg-blue-600",
-        what: "See how the AI counts and tracks people density in real time — useful for malls, offices, and public spaces to avoid overcrowding.",
+        what: "Watch the AI classify what each person is doing in real time — working, walking, standing. No manual review, just live understanding of the floor.",
     },
     {
-        id: "heatmap",
+        id: "occupancy-monitoring",
+        label: "Occupancy Monitoring",
+        file: "/videos/airco-secure/occupancy-monitoring.mp4",
+        tag: "AI Model",
+        tagColor: "bg-teal-600",
+        what: "Know exactly how many people are in any zone at any moment — useful for capacity limits, staffing decisions, and space planning.",
+    },
+    {
+        id: "staff-tracking",
+        label: "Staff Movement Tracking",
+        file: "/videos/airco-secure/staff-tracking.mp4",
+        tag: "AI Model",
+        tagColor: "bg-purple-600",
+        what: "Track where staff move throughout their shift — who's covering which zone, response times, and coverage gaps. No wearables, no tags.",
+    },
+    {
+        id: "crowd-density",
+        label: "Crowd Density Detection",
+        file: "/videos/airco-secure/crowd-density.mp4",
+        tag: "Hospitality",
+        tagColor: "bg-orange-600",
+        what: "See density build up in real time — the AI marks each person so you know exactly how crowded an area is before it becomes a problem.",
+    },
+    {
+        id: "density-model-testing",
+        label: "Density Detection — Model Testing",
+        file: "/videos/airco-secure/density-model-testing.mp4",
+        tag: "Model Testing",
+        tagColor: "bg-indigo-600",
+        what: "Raw model validation footage — every person in frame is counted and tracked to measure the model's real-world accuracy before deployment.",
+    },
+    {
+        id: "box-heatmap",
         label: "Box Counting & Heat Map",
         file: "/videos/airco-secure/box-heatmap.mp4",
-        tag: "AI Model",
+        tag: "Warehouse",
         tagColor: "bg-green-700",
         what: "Track object movement and generate heat maps showing which areas get the most traffic — invaluable for retail layout and warehouse ops.",
     },
@@ -66,7 +98,7 @@ export function AircoSecureExtras() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                         {demos.map((demo, i) => (
                             <motion.div
                                 key={demo.id}

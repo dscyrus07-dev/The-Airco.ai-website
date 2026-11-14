@@ -138,7 +138,7 @@ export default async function ProductPage({
 
             {/* Process flowchart */}
             <section className="bg-black py-24">
-                <div className="container mx-auto max-w-5xl px-4 md:px-6">
+                <div className="container mx-auto max-w-7xl px-4 md:px-6">
                     <SectionHeading
                         eyebrow="How it works"
                         title="The process, end to end."

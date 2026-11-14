@@ -20,7 +20,6 @@ const brochures = [
     { label: "Construction", file: "construction", what: "Site safety, equipment tracking, and progress monitoring." },
     { label: "Highway & Tunnel", file: "highway-tunnel", what: "Traffic flow, incident detection, and road safety monitoring." },
     { label: "AI Infographics", file: "ai-infographics", what: "Full visual overview of AiRCO's AI capabilities, models, and technology." },
-    { label: "Flipkart Case Study", file: "flipkart-casestudy", what: "Real results — how AiRCO delivered measurable outcomes for Flipkart." },
 ];
 
 const demos = [

@@ -19,7 +19,7 @@ export default function Drone() {
 
     const handleClick = () => {
         const whatsappMessage = "Hi! I'm interested in AiRCo's drone solutions.";
-        const whatsappUrl = `https://wa.me/917021320783?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappUrl = `https://wa.me/918419900259?text=${encodeURIComponent(whatsappMessage)}`;
         window.open(whatsappUrl, "_blank");
     };
 

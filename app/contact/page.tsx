@@ -216,13 +216,13 @@ export default function ContactPage() {
                                 <h3 className="mb-4 text-lg font-bold text-white">Quick Actions</h3>
                                 <div className="space-y-2">
                                     {[
-                                        { label: "Schedule a Demo", msg: "Hi! I'd like to schedule a demo." },
-                                        { label: "Get Pricing", msg: "Hi! I'd like to learn more about AiRCO pricing." },
-                                        { label: "Technical Support", msg: "Hi! I have a technical question about AiRCO." },
+                                        { label: "Schedule a Demo", num: "918419900259", msg: "Hi! I'd like to schedule a demo." },
+                                        { label: "Get Pricing", num: "918419900259", msg: "Hi! I'd like to learn more about AiRCO pricing." },
+                                        { label: "Technical Support", num: "918855994761", msg: "Hi! I have a technical question about AiRCO." },
                                     ].map((action) => (
                                         <a
                                             key={action.label}
-                                            href={`https://wa.me/917021320783?text=${encodeURIComponent(action.msg)}`}
+                                            href={`https://wa.me/${action.num}?text=${encodeURIComponent(action.msg)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center justify-between rounded-xl px-4 py-3 text-sm text-gray-300 transition-colors hover:bg-white/5 hover:text-white"

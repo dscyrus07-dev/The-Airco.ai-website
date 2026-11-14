@@ -14,17 +14,33 @@ export default function ContactPage() {
         product: "",
         message: "",
     });
+    const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const parts = [
-            `Hello! I'm ${formData.name}`,
-            formData.company && `from ${formData.company}`,
-            formData.product && `inquiring about ${formData.product}`,
-            formData.message,
-        ].filter(Boolean);
-        const whatsappUrl = `https://wa.me/917021320783?text=${encodeURIComponent(parts.join(" ") + ".")}`;
-        window.open(whatsappUrl, "_blank");
+        setStatus("sending");
+        try {
+            const payload = new FormData(e.currentTarget);
+            payload.append("access_key", "e829e5c8-299a-40df-b97b-963b27142bba");
+            payload.append("subject", `New enquiry — ${formData.product || "General"} — theairco.ai`);
+            payload.append("from_name", "AiRCO Website");
+            payload.append("replyto", formData.email);
+
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: payload,
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                setStatus("success");
+                setFormData({ name: "", email: "", company: "", product: "", message: "" });
+            } else {
+                setStatus("error");
+            }
+        } catch {
+            setStatus("error");
+        }
     };
 
     const inputClass =
@@ -70,6 +86,7 @@ export default function ContactPage() {
                                         <label className="text-sm font-medium text-gray-300">Full Name</label>
                                         <input
                                             type="text"
+                                            name="name"
                                             required
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -81,6 +98,7 @@ export default function ContactPage() {
                                         <label className="text-sm font-medium text-gray-300">Work Email</label>
                                         <input
                                             type="email"
+                                            name="email"
                                             required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -94,6 +112,7 @@ export default function ContactPage() {
                                     <label className="text-sm font-medium text-gray-300">Company</label>
                                     <input
                                         type="text"
+                                        name="company"
                                         value={formData.company}
                                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                                         className={inputClass}
@@ -104,6 +123,7 @@ export default function ContactPage() {
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-gray-300">Inquire about</label>
                                     <select
+                                        name="product"
                                         value={formData.product}
                                         onChange={(e) => setFormData({ ...formData, product: e.target.value })}
                                         className={inputClass}
@@ -121,6 +141,7 @@ export default function ContactPage() {
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-gray-300">Message</label>
                                     <textarea
+                                        name="message"
                                         rows={4}
                                         value={formData.message}
                                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -129,14 +150,37 @@ export default function ContactPage() {
                                     />
                                 </div>
 
+                                {/* Honeypot spam trap — invisible to humans */}
+                                <input
+                                    type="checkbox"
+                                    name="botcheck"
+                                    className="hidden"
+                                    style={{ display: "none" }}
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                />
+
                                 <button
                                     type="submit"
-                                    className="group flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 font-semibold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 hover:from-purple-700 hover:to-blue-700"
+                                    disabled={status === "sending"}
+                                    className="group flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 font-semibold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 hover:from-purple-700 hover:to-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
                                 >
                                     <Send className="h-4 w-4" />
-                                    Send Message
+                                    {status === "sending" ? "Sending..." : "Send Message"}
                                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </button>
+
+                                {status === "success" && (
+                                    <p className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-center text-sm text-emerald-300">
+                                        Message sent — we&apos;ll get back to you shortly.
+                                    </p>
+                                )}
+                                {status === "error" && (
+                                    <p className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-center text-sm text-red-300">
+                                        Something went wrong. Please email us at info@the-airco.com
+                                        directly.
+                                    </p>
+                                )}
                             </form>
                             <p className="mt-4 text-center text-xs text-gray-500">
                                 We&apos;ll only use your information to respond to your enquiry.

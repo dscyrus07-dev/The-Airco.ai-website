@@ -15,10 +15,7 @@ import { AircoSecureCapabilitiesFlow } from "@/components/visuals/AircoSecureCap
 import { products, getProduct } from "@/lib/data/products";
 
 const productImages: Record<string, string> = {
-    "airco-secure": "/images/products/secure-surveillance.png",
-    "airco-vms": "/images/products/pms-dashboard.png",
     "airco-insights": "/images/products/airco-insights-showcase.webp",
-    "airco-chatbot": "/images/products/bot-chatbot.png",
 };
 
 export function generateStaticParams() {
@@ -121,11 +118,7 @@ export default async function ProductPage({
                         </FadeIn>
                         {productImages[product.slug] && (
                             <FadeIn delay={0.15}>
-                                <div
-                                    className={`relative mt-5 overflow-hidden rounded-2xl border border-white/10 ${
-                                        product.slug === "airco-insights" ? "aspect-[2/1]" : "aspect-[21/9]"
-                                    }`}
-                                >
+                                <div className="relative mt-5 aspect-[2/1] overflow-hidden rounded-2xl border border-white/10">
                                     <Image
                                         src={productImages[product.slug]}
                                         alt={`${product.name} platform preview`}
@@ -133,9 +126,6 @@ export default async function ProductPage({
                                         className="object-cover"
                                         sizes="(max-width: 1024px) 100vw, 1024px"
                                     />
-                                    {product.slug !== "airco-insights" && (
-                                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                                    )}
                                 </div>
                             </FadeIn>
                         )}

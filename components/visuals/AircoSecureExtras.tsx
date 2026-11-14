@@ -98,63 +98,95 @@ export function AircoSecureExtras() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                        {demos.map((demo, i) => (
-                            <motion.div
-                                key={demo.id}
-                                initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ type: "spring", stiffness: 120, damping: 16, delay: i * 0.08 }}
-                                className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
-                            >
-                                {/* Video */}
-                                <div className="relative aspect-video w-full overflow-hidden bg-gray-950">
-                                    {playing === demo.id ? (
-                                        <>
-                                            <video
-                                                src={demo.file}
-                                                autoPlay
-                                                controls
-                                                playsInline
-                                                className="h-full w-full object-contain"
-                                                onEnded={() => setPlaying(null)}
-                                            />
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {demos.map((demo, i) => {
+                            const poster = demo.file.replace(".mp4", ".jpg");
+                            return (
+                                <motion.div
+                                    key={demo.id}
+                                    initial={{ opacity: 0, y: 24 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ type: "spring", stiffness: 120, damping: 16, delay: (i % 3) * 0.08 }}
+                                    className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
+                                >
+                                    {/* Video */}
+                                    <div className="relative aspect-video w-full overflow-hidden bg-gray-950">
+                                        {playing === demo.id ? (
+                                            <>
+                                                <video
+                                                    src={demo.file}
+                                                    poster={poster}
+                                                    autoPlay
+                                                    controls
+                                                    playsInline
+                                                    preload="metadata"
+                                                    className="h-full w-full object-contain"
+                                                    onEnded={() => setPlaying(null)}
+                                                />
+                                                <button
+                                                    onClick={() => setPlaying(null)}
+                                                    className="absolute right-2 top-2 rounded-full bg-black/70 p-1.5 text-white hover:bg-black"
+                                                >
+                                                    <X className="h-4 w-4" />
+                                                </button>
+                                            </>
+                                        ) : (
                                             <button
-                                                onClick={() => setPlaying(null)}
-                                                className="absolute right-2 top-2 rounded-full bg-black/70 p-1.5 text-white hover:bg-black"
+                                                onClick={() => setPlaying(demo.id)}
+                                                className="group relative block h-full w-full"
                                             >
-                                                <X className="h-4 w-4" />
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                <img
+                                                    src={poster}
+                                                    alt={`${demo.label} preview`}
+                                                    className="h-full w-full object-cover"
+                                                    loading="lazy"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <span className="flex h-16 w-16 items-center justify-center rounded-full bg-black/60 ring-2 ring-white/30 backdrop-blur-sm transition-all duration-200 group-hover:scale-110 group-hover:bg-purple-600/90 group-hover:ring-purple-400">
+                                                        <Play className="h-7 w-7 translate-x-0.5 text-white" />
+                                                    </span>
+                                                </div>
+                                                <span className="absolute bottom-3 left-3 rounded-md bg-black/70 px-2 py-1 text-[11px] font-bold text-white backdrop-blur-sm">
+                                                    {demo.tag}
+                                                </span>
                                             </button>
-                                        </>
-                                    ) : (
-                                        <button
-                                            onClick={() => setPlaying(demo.id)}
-                                            className="group relative flex h-full w-full items-center justify-center"
-                                        >
-                                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-purple-900/40 to-blue-900/30" />
-                                            <div className="relative flex flex-col items-center gap-3">
-                                                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 backdrop-blur-sm transition-all duration-200 group-hover:scale-110 group-hover:bg-purple-600/80 group-hover:ring-purple-400">
-                                                    <Play className="h-7 w-7 translate-x-0.5 text-white" />
-                                                </span>
-                                                <span className="text-sm font-semibold text-white/80 group-hover:text-white">
-                                                    Play Demo
-                                                </span>
-                                            </div>
-                                        </button>
-                                    )}
-                                </div>
+                                        )}
+                                    </div>
 
-                                {/* Info */}
-                                <div className="p-5">
-                                    <span className={`inline-block rounded-full px-2.5 py-0.5 text-[10px] font-bold text-white ${demo.tagColor}`}>
-                                        {demo.tag}
-                                    </span>
-                                    <h3 className="mt-2 font-bold text-white">{demo.label}</h3>
-                                    <p className="mt-1.5 text-sm leading-relaxed text-gray-400">{demo.what}</p>
-                                </div>
-                            </motion.div>
-                        ))}
+                                    {/* Info */}
+                                    <div className="p-5">
+                                        <h3 className="font-bold text-white">{demo.label}</h3>
+                                        <p className="mt-1.5 text-sm leading-relaxed text-gray-400">{demo.what}</p>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
+
+                        {/* CTA tile — completes the grid */}
+                        <motion.a
+                            href="/contact"
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ type: "spring", stiffness: 120, damping: 16, delay: 0.16 }}
+                            className="group flex min-h-[280px] flex-col items-center justify-center gap-4 rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-600/15 to-blue-600/10 p-8 text-center transition hover:border-purple-400/50"
+                        >
+                            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-600/20 ring-2 ring-purple-500/40 transition-transform group-hover:scale-110">
+                                <Play className="h-7 w-7 text-purple-300" />
+                            </span>
+                            <h3 className="text-xl font-bold text-white">
+                                Want to see this on your own cameras?
+                            </h3>
+                            <p className="text-sm text-gray-400">
+                                We'll run a live pilot on your existing CCTV — no new hardware needed.
+                            </p>
+                            <span className="mt-2 rounded-xl bg-purple-600 px-6 py-3 text-sm font-bold text-white transition group-hover:bg-purple-500">
+                                Schedule a Demo
+                            </span>
+                        </motion.a>
                     </div>
                 </div>
             </section>

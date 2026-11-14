@@ -9,6 +9,8 @@ import { PrimaryButton } from "@/components/site/Buttons";
 import { SectionHeading, FadeIn } from "@/components/ui/section";
 import { ProductVisual } from "@/components/visuals/ProductVisual";
 import { FlowChart } from "@/components/visuals/FlowChart";
+import { AircoSecureDashboard } from "@/components/visuals/AircoSecureDashboard";
+import { AircoSecureExtras } from "@/components/visuals/AircoSecureExtras";
 import { products, getProduct } from "@/lib/data/products";
 
 const productImages: Record<string, string> = {
@@ -77,28 +79,32 @@ export default async function ProductPage({
                 </div>
             </section>
 
-            {/* Product visual */}
-            <section className="pb-8">
-                <div className="container mx-auto max-w-5xl px-4 md:px-6">
-                    <FadeIn>
-                        <ProductVisual kind={product.visual} />
-                    </FadeIn>
-                    {productImages[product.slug] && (
-                        <FadeIn delay={0.15}>
-                            <div className="relative mt-5 aspect-[21/9] overflow-hidden rounded-2xl border border-white/10">
-                                <Image
-                                    src={productImages[product.slug]}
-                                    alt={`${product.name} platform preview`}
-                                    fill
-                                    className="object-cover"
-                                    sizes="(max-width: 1024px) 100vw, 1024px"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                            </div>
+            {/* Product visual / Dashboard showcase */}
+            {product.slug === "airco-secure" ? (
+                <AircoSecureDashboard />
+            ) : (
+                <section className="pb-8">
+                    <div className="container mx-auto max-w-5xl px-4 md:px-6">
+                        <FadeIn>
+                            <ProductVisual kind={product.visual} />
                         </FadeIn>
-                    )}
-                </div>
-            </section>
+                        {productImages[product.slug] && (
+                            <FadeIn delay={0.15}>
+                                <div className="relative mt-5 aspect-[21/9] overflow-hidden rounded-2xl border border-white/10">
+                                    <Image
+                                        src={productImages[product.slug]}
+                                        alt={`${product.name} platform preview`}
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 1024px) 100vw, 1024px"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                                </div>
+                            </FadeIn>
+                        )}
+                    </div>
+                </section>
+            )}
 
             {/* Process flowchart */}
             <section className="bg-black py-24">
@@ -198,6 +204,8 @@ export default async function ProductPage({
                     </Link>
                 </div>
             </section>
+
+            {product.slug === "airco-secure" && <AircoSecureExtras />}
 
             <FinalCTA title={product.tagline} ctaLabel={product.cta} />
         </SiteShell>

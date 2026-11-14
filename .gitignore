@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large media assets (deployed via FTP, not tracked in git)
+content/
+public/videos/

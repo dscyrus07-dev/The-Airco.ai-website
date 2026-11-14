@@ -11,6 +11,7 @@ import { ProductVisual } from "@/components/visuals/ProductVisual";
 import { FlowChart } from "@/components/visuals/FlowChart";
 import { AircoSecureDashboard } from "@/components/visuals/AircoSecureDashboard";
 import { AircoSecureExtras } from "@/components/visuals/AircoSecureExtras";
+import { AircoSecureCapabilitiesFlow } from "@/components/visuals/AircoSecureCapabilitiesFlow";
 import { products, getProduct } from "@/lib/data/products";
 
 const productImages: Record<string, string> = {
@@ -149,42 +150,49 @@ export default async function ProductPage({
             </section>
 
             {/* Capabilities + Use cases */}
-            <section className="py-24">
-                <div className="container mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2 md:px-6">
-                    <FadeIn>
-                        <h2 className="mb-6 text-2xl font-bold text-white">Capabilities</h2>
-                        <ul className="space-y-3">
-                            {product.capabilities.map((capability, i) => (
-                                <li
-                                    key={capability}
-                                    className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3.5"
-                                >
-                                    <span className="text-xs font-bold text-purple-500">
-                                        {String(i + 1).padStart(2, "0")}
-                                    </span>
-                                    <span className="text-gray-300">{capability}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </FadeIn>
-                    <FadeIn delay={0.1}>
-                        <h2 className="mb-6 text-2xl font-bold text-white">Use cases</h2>
-                        <ul className="space-y-3">
-                            {product.useCases.map((useCase, i) => (
-                                <li
-                                    key={useCase}
-                                    className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3.5"
-                                >
-                                    <span className="text-xs font-bold text-blue-400">
-                                        {String(i + 1).padStart(2, "0")}
-                                    </span>
-                                    <span className="text-gray-300">{useCase}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </FadeIn>
-                </div>
-            </section>
+            {product.slug === "airco-secure" ? (
+                <AircoSecureCapabilitiesFlow
+                    capabilities={product.capabilities}
+                    useCases={product.useCases}
+                />
+            ) : (
+                <section className="py-24">
+                    <div className="container mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2 md:px-6">
+                        <FadeIn>
+                            <h2 className="mb-6 text-2xl font-bold text-white">Capabilities</h2>
+                            <ul className="space-y-3">
+                                {product.capabilities.map((capability, i) => (
+                                    <li
+                                        key={capability}
+                                        className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3.5"
+                                    >
+                                        <span className="text-xs font-bold text-purple-500">
+                                            {String(i + 1).padStart(2, "0")}
+                                        </span>
+                                        <span className="text-gray-300">{capability}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </FadeIn>
+                        <FadeIn delay={0.1}>
+                            <h2 className="mb-6 text-2xl font-bold text-white">Use cases</h2>
+                            <ul className="space-y-3">
+                                {product.useCases.map((useCase, i) => (
+                                    <li
+                                        key={useCase}
+                                        className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3.5"
+                                    >
+                                        <span className="text-xs font-bold text-blue-400">
+                                            {String(i + 1).padStart(2, "0")}
+                                        </span>
+                                        <span className="text-gray-300">{useCase}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </FadeIn>
+                    </div>
+                </section>
+            )}
 
             {/* Business value */}
             <section className="bg-black py-16">

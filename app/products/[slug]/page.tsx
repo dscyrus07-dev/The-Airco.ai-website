@@ -59,21 +59,51 @@ export default async function ProductPage({
 
             {/* Problem / Solution */}
             <section className="py-16">
-                <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-2 md:px-6">
+                <div
+                    className={`container mx-auto grid grid-cols-1 gap-6 px-4 md:grid-cols-2 md:px-6 ${
+                        product.problemImage || product.solutionImage ? "max-w-7xl" : "max-w-6xl"
+                    }`}
+                >
                     <FadeIn>
-                        <div className="h-full rounded-2xl border border-white/10 bg-black/40 p-8">
-                            <p className="text-xs uppercase tracking-widest text-red-400/80">The problem</p>
-                            <h2 className="mt-3 mb-3 text-xl font-bold text-white">
-                                What slows organisations down
-                            </h2>
-                            <p className="leading-relaxed text-gray-400">{product.problem}</p>
+                        <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/40">
+                            {product.problemImage && (
+                                <div className="relative aspect-[2/1] w-full overflow-hidden border-b border-white/10 bg-gray-950">
+                                    <Image
+                                        src={product.problemImage}
+                                        alt="What slows organisations down — traditional CCTV challenges"
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, 640px"
+                                    />
+                                </div>
+                            )}
+                            <div className="p-8">
+                                <p className="text-xs uppercase tracking-widest text-red-400/80">The problem</p>
+                                <h2 className="mt-3 mb-3 text-xl font-bold text-white">
+                                    What slows organisations down
+                                </h2>
+                                <p className="leading-relaxed text-gray-400">{product.problem}</p>
+                            </div>
                         </div>
                     </FadeIn>
                     <FadeIn delay={0.1}>
-                        <div className="h-full rounded-2xl border border-purple-500/25 bg-gradient-to-br from-purple-500/[0.08] to-blue-500/[0.04] p-8">
-                            <p className="text-xs uppercase tracking-widest text-purple-400">The solution</p>
-                            <h2 className="mt-3 mb-3 text-xl font-bold text-white">How AiRCO changes it</h2>
-                            <p className="leading-relaxed text-gray-300">{product.solution}</p>
+                        <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-purple-500/25 bg-gradient-to-br from-purple-500/[0.08] to-blue-500/[0.04]">
+                            {product.solutionImage && (
+                                <div className="relative aspect-[2/1] w-full overflow-hidden border-b border-purple-500/20 bg-gray-950">
+                                    <Image
+                                        src={product.solutionImage}
+                                        alt="How AiRCO changes it — real-time AI security detection"
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, 640px"
+                                    />
+                                </div>
+                            )}
+                            <div className="p-8">
+                                <p className="text-xs uppercase tracking-widest text-purple-400">The solution</p>
+                                <h2 className="mt-3 mb-3 text-xl font-bold text-white">How AiRCO changes it</h2>
+                                <p className="leading-relaxed text-gray-300">{product.solution}</p>
+                            </div>
                         </div>
                     </FadeIn>
                 </div>

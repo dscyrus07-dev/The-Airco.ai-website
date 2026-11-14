@@ -16,6 +16,8 @@ export type Product = {
     description: string;
     problem: string;
     solution: string;
+    problemImage?: string;
+    solutionImage?: string;
     process: ProcessStep[];
     capabilities: string[];
     useCases: string[];
@@ -38,6 +40,8 @@ export const products: Product[] = [
             "Traditional CCTV depends on someone actively watching a screen. Threats get missed, response is delayed, and reviewing footage after an incident takes hours a security team doesn't have.",
         solution:
             "Airco Secure uses computer vision to continuously analyse live camera feeds and automatically flag intrusions, unauthorised access, restricted-zone violations, and loitering the moment they happen — so your security team is alerted, not left searching.",
+        problemImage: "/images/airco-secure/problem.webp",
+        solutionImage: "/images/airco-secure/solution.webp",
         process: [
             { title: "Connect", description: "Airco Secure works with your existing CCTV infrastructure; no camera replacement required." },
             { title: "Analyse continuously", description: "Every frame is analysed in real time against defined risk patterns." },

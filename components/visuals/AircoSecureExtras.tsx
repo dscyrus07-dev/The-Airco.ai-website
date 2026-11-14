@@ -181,7 +181,7 @@ export function AircoSecureExtras() {
                                 Want to see this on your own cameras?
                             </h3>
                             <p className="text-sm text-gray-400">
-                                We'll run a live pilot on your existing CCTV — no new hardware needed.
+                                We&apos;ll run a live pilot on your existing CCTV — no new hardware needed.
                             </p>
                             <span className="mt-2 rounded-xl bg-purple-600 px-6 py-3 text-sm font-bold text-white transition group-hover:bg-purple-500">
                                 Schedule a Demo

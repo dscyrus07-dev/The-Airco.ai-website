@@ -2,25 +2,25 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Download, FileText, Play, X, Building2, ShoppingBag, Truck, Factory, Landmark, Plane, Zap, GraduationCap, TreePine, Warehouse, BarChart3, Heart } from "lucide-react";
+import { Download, FileText, Play, X } from "lucide-react";
 
 const brochures = [
-    { label: "Banking & Finance", file: "/brochures/airco-secure/banking.pdf", icon: Building2, color: "text-blue-400", bg: "bg-blue-500/10 border-blue-500/20" },
-    { label: "Retail", file: "/brochures/airco-secure/retail.pdf", icon: ShoppingBag, color: "text-pink-400", bg: "bg-pink-500/10 border-pink-500/20" },
-    { label: "Logistics", file: "/brochures/airco-secure/logistics.pdf", icon: Truck, color: "text-yellow-400", bg: "bg-yellow-500/10 border-yellow-500/20" },
-    { label: "Manufacturing", file: "/brochures/airco-secure/manufacturing.pdf", icon: Factory, color: "text-orange-400", bg: "bg-orange-500/10 border-orange-500/20" },
-    { label: "Government & Public Safety", file: "/brochures/airco-secure/public-safety.pdf", icon: Landmark, color: "text-purple-400", bg: "bg-purple-500/10 border-purple-500/20" },
-    { label: "Hospitality", file: "/brochures/airco-secure/hospitality.pdf", icon: Heart, color: "text-rose-400", bg: "bg-rose-500/10 border-rose-500/20" },
-    { label: "Aviation", file: "/brochures/airco-secure/aviation.pdf", icon: Plane, color: "text-sky-400", bg: "bg-sky-500/10 border-sky-500/20" },
-    { label: "Energy", file: "/brochures/airco-secure/energy.pdf", icon: Zap, color: "text-amber-400", bg: "bg-amber-500/10 border-amber-500/20" },
-    { label: "Education", file: "/brochures/airco-secure/education.pdf", icon: GraduationCap, color: "text-teal-400", bg: "bg-teal-500/10 border-teal-500/20" },
-    { label: "Smart City", file: "/brochures/airco-secure/smart-city.pdf", icon: TreePine, color: "text-green-400", bg: "bg-green-500/10 border-green-500/20" },
-    { label: "Data Centre", file: "/brochures/airco-secure/data-centre.pdf", icon: BarChart3, color: "text-cyan-400", bg: "bg-cyan-500/10 border-cyan-500/20" },
-    { label: "Warehouse", file: "/brochures/airco-secure/warehouse.pdf", icon: Warehouse, color: "text-lime-400", bg: "bg-lime-500/10 border-lime-500/20" },
-    { label: "Construction", file: "/brochures/airco-secure/construction.pdf", icon: Building2, color: "text-stone-400", bg: "bg-stone-500/10 border-stone-500/20" },
-    { label: "Highway & Tunnel", file: "/brochures/airco-secure/highway-tunnel.pdf", icon: Truck, color: "text-indigo-400", bg: "bg-indigo-500/10 border-indigo-500/20" },
-    { label: "AI Infographics", file: "/brochures/airco-secure/ai-infographics.pdf", icon: FileText, color: "text-violet-400", bg: "bg-violet-500/10 border-violet-500/20" },
-    { label: "Flipkart Case Study", file: "/brochures/airco-secure/flipkart-casestudy.pdf", icon: ShoppingBag, color: "text-orange-300", bg: "bg-orange-500/10 border-orange-500/20" },
+    { label: "Banking & Finance", file: "banking", what: "Branch security, queue management, and staff monitoring across banking floors and ATMs." },
+    { label: "Retail", file: "retail", what: "Footfall counting, heat maps, and theft detection for stores and malls." },
+    { label: "Logistics", file: "logistics", what: "Vehicle tracking, dock monitoring, and yard operations for logistics hubs." },
+    { label: "Manufacturing", file: "manufacturing", what: "PPE compliance, worker safety, and production floor monitoring." },
+    { label: "Public Safety", file: "public-safety", what: "City-wide surveillance, crowd control, and incident response for government." },
+    { label: "Hospitality", file: "hospitality", what: "Guest experience, staff efficiency, and property-wide security for hotels." },
+    { label: "Aviation", file: "aviation", what: "Terminal monitoring, passenger flow, and perimeter security for airports." },
+    { label: "Energy", file: "energy", what: "Critical infrastructure, plant monitoring, and remote asset protection." },
+    { label: "Education", file: "education", what: "Campus security, attendance automation, and student safety monitoring." },
+    { label: "Smart City", file: "smart-city", what: "Traffic management, public space monitoring, and integrated command centers." },
+    { label: "Data Centre", file: "data-centre", what: "Perimeter security, access control, and server room monitoring." },
+    { label: "Warehouse", file: "warehouse", what: "Inventory zones, dock activity, and worker movement tracking." },
+    { label: "Construction", file: "construction", what: "Site safety, equipment tracking, and progress monitoring." },
+    { label: "Highway & Tunnel", file: "highway-tunnel", what: "Traffic flow, incident detection, and road safety monitoring." },
+    { label: "AI Infographics", file: "ai-infographics", what: "Full visual overview of AiRCO's AI capabilities, models, and technology." },
+    { label: "Flipkart Case Study", file: "flipkart-casestudy", what: "Real results — how AiRCO delivered measurable outcomes for Flipkart." },
 ];
 
 const demos = [
@@ -214,31 +214,50 @@ export function AircoSecureExtras() {
                         </a>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                        {brochures.map((b, i) => {
-                            const BIcon = b.icon;
-                            return (
-                                <motion.a
-                                    key={b.label}
-                                    href={b.file}
-                                    download
-                                    initial={{ opacity: 0, y: 16 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ type: "spring", stiffness: 140, damping: 16, delay: (i % 4) * 0.06 }}
-                                    className={`group flex items-center gap-3 rounded-xl border p-4 transition-all hover:scale-[1.02] hover:shadow-lg ${b.bg}`}
-                                >
-                                    <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/5 ${b.color} transition-transform group-hover:scale-110`}>
-                                        <BIcon className="h-5 w-5" />
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                        {brochures.map((b, i) => (
+                            <motion.div
+                                key={b.label}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ type: "spring", stiffness: 140, damping: 16, delay: (i % 4) * 0.06 }}
+                                className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/10"
+                            >
+                                {/* Preview */}
+                                <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-950">
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img
+                                        src={`/brochures/airco-secure/previews/${b.file}.jpg`}
+                                        alt={`${b.label} brochure preview`}
+                                        className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.04]"
+                                        loading="lazy"
+                                    />
+                                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                                    <span className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-md bg-black/70 px-2 py-1 text-[10px] font-bold text-white backdrop-blur-sm">
+                                        <FileText className="h-3 w-3" />
+                                        PDF
                                     </span>
-                                    <div className="min-w-0 flex-1">
-                                        <p className="truncate text-sm font-semibold text-white">{b.label}</p>
-                                        <p className="text-xs text-gray-500">PDF</p>
-                                    </div>
-                                    <Download className="h-4 w-4 shrink-0 text-gray-500 transition-colors group-hover:text-white" />
-                                </motion.a>
-                            );
-                        })}
+                                    <span className="absolute right-3 top-3 rounded-md bg-white/10 px-2 py-1 text-[10px] font-bold text-white/80 backdrop-blur-sm">
+                                        {(i + 1).toString().padStart(2, "0")}
+                                    </span>
+                                </div>
+
+                                {/* Info */}
+                                <div className="flex flex-1 flex-col p-5">
+                                    <h3 className="font-bold text-white">{b.label}</h3>
+                                    <p className="mt-1.5 flex-1 text-sm leading-relaxed text-gray-400">{b.what}</p>
+                                    <a
+                                        href={`/brochures/airco-secure/${b.file}.pdf`}
+                                        download
+                                        className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-purple-500/30 bg-purple-500/10 px-4 py-2.5 text-sm font-semibold text-purple-300 transition hover:bg-purple-500 hover:text-white"
+                                    >
+                                        <Download className="h-4 w-4" />
+                                        Download PDF
+                                    </a>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>

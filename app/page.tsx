@@ -122,7 +122,7 @@ export default function Home() {
                         <Drone />
                     </ThreeViewer>
                 </div>
-                <div className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-950/60 via-gray-950/40 to-gray-950" />
+                <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-gray-950/60 via-gray-950/40 to-gray-950" />
 
                 <div className="container relative z-10 px-4 text-center md:px-6">
                     <motion.div
@@ -150,7 +150,7 @@ export default function Home() {
                             teams can see clearly and decide faster.
                         </p>
 
-                        <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
+                        <div className="pointer-events-auto flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
                             <PrimaryButton href="/solutions">Explore Our Solutions</PrimaryButton>
                             <SecondaryButton href="/contact">Talk to Us</SecondaryButton>
                         </div>
